@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-public class DeclarationSearchTest extends BaseTest {
-    private final String name = "Порошенко Петро Олексійович";
+public class DeclarationFirstPersonTest extends BaseTest {
+    private final String name1 = "Порошенко Петро Олексійович";
     private final String type = "Декларація";
     private final String year = "2016";
 
@@ -18,7 +18,7 @@ public class DeclarationSearchTest extends BaseTest {
     @Test
     public void search() throws InterruptedException {
         MainPage mainPage = new MainPage(webDriver);
-        FilterPage filterPage = mainPage.searchOfPerson(name);
+        FilterPage filterPage = mainPage.searchOfPerson(name1);
         assertTrue(filterPage.getResultSearch().isDisplayed());
         filterPage.openTypeMenu();
         assertTrue(filterPage.getDropdownMenu().isDisplayed());
@@ -32,5 +32,6 @@ public class DeclarationSearchTest extends BaseTest {
         assertTrue(filterPage.getResultFilter().isDisplayed());
         DeclarationPage declarationPage = filterPage.openDocument();
         assertTrue(declarationPage.getDocument().isDisplayed());
+        declarationPage.totalCost();
     }
 }

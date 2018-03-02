@@ -3,7 +3,7 @@
 <suite name="Test">
     <test name="Tests2">
         <classes>
-            <class name="declaration.tests.DeclarationSearchTest"/>
+            <class name="declaration.tests.DeclarationFirstPersonTest"/>
         </classes>
     </test>
 </suite>

@@ -2,7 +2,8 @@ package declaration.core.Util;
 
 
 public class ObjectsDeclaration {
-
+//    WebDriver webDriver;
+//
 //    private String typeOfObject;
 //    private String dateOfLicense;
 //    private String cost;
