@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Test">
+    <test name="Tests2">
+        <classes>
+            <class name="declaration.tests.DeclarationSearchTest"/>
+        </classes>
+    </test>
+</suite>
