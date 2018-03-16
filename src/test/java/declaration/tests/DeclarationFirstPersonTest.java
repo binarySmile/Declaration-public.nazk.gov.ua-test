@@ -2,6 +2,7 @@ package declaration.tests;
 
 
 import declaration.core.BaseTest;
+import declaration.core.Util.panels.CommonForPanels;
 import declaration.core.pages.DeclarationPage;
 import declaration.core.pages.FilterPage;
 import declaration.core.pages.MainPage;
@@ -33,8 +34,8 @@ public class DeclarationFirstPersonTest extends BaseTest {
         filterPage.runFilter();
         assertTrue(filterPage.getResultFilter().isDisplayed());
         DeclarationPage declarationPage = filterPage.openDocument();
-        declarationPage.totalCost();
+        CommonForPanels commonForPanels = new CommonForPanels(webDriver);
+        commonForPanels.totalCost();
         assertTrue(declarationPage.getDocument().isDisplayed());
-
     }
 }

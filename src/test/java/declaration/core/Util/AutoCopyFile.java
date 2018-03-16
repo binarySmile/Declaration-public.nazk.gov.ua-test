@@ -33,7 +33,7 @@ public class AutoCopyFile extends BaseTest {
         }
     }
 
-    public void deleteAllFilesFolder(String path) {
+    public void deleteAllFilesFromFolder(String path) {
         for (File myFile : new File(path).listFiles())
             if (myFile.isFile()) myFile.delete();
     }

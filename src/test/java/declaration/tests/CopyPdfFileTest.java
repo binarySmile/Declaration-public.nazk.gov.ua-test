@@ -15,7 +15,6 @@ public class CopyPdfFileTest extends BaseTest{
     private final String type = "Декларація";
     private final String typeFilter2 = "Рік:";
     private final String year = "2016";
-    private final String path = "C:/Users/Anna/AutoTests/TestDeclaration/src/test/java/declaration/core/PackageForFile";
 
 @Test
     public void copyFile() throws InterruptedException {
@@ -35,7 +34,7 @@ public class CopyPdfFileTest extends BaseTest{
         AutoCopyFile autoCopyFile = new AutoCopyFile(webDriver);
         autoCopyFile.copyPdfFile();
         assertTrue(autoCopyFile.searchFile(path));
-        autoCopyFile.deleteAllFilesFolder(path);
+        autoCopyFile.deleteAllFilesFromFolder(path);
         assertTrue(autoCopyFile.searchFile(path));
     }
 }
