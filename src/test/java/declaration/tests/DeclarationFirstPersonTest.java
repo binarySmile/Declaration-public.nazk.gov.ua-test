@@ -11,27 +11,30 @@ import static org.testng.Assert.assertTrue;
 
 public class DeclarationFirstPersonTest extends BaseTest {
     private final String name1 = "Порошенко Петро Олексійович";
+    private final String typeFilter = "Тип документу:";
     private final String type = "Декларація";
+    private final String typeFilter2 = "Рік:";
     private final String year = "2016";
 
 
     @Test
-    public void search() throws InterruptedException {
+    public void filterAndTestDeclaration(){
         MainPage mainPage = new MainPage(webDriver);
         FilterPage filterPage = mainPage.searchOfPerson(name1);
         assertTrue(filterPage.getResultSearch().isDisplayed());
-        filterPage.openTypeMenu();
-        assertTrue(filterPage.getDropdownMenu().isDisplayed());
+        filterPage.openTypeMenu(typeFilter);
+        assertTrue(filterPage.getDropdownMenu(type));
         filterPage.choiceFilter(type);
-        assertTrue(filterPage.getSelectedType(type));
-        filterPage.openYearMenu();
+        assertTrue(filterPage.getSelectedFilter(type));
+        filterPage.openTypeMenu(typeFilter2);
         assertTrue(filterPage.getPanelSelectionOfYear().isDisplayed());
         filterPage.choiceFilter(year);
-        assertTrue(filterPage.getSelectedYear(year));
+        assertTrue(filterPage.getSelectedFilter(year));
         filterPage.runFilter();
         assertTrue(filterPage.getResultFilter().isDisplayed());
         DeclarationPage declarationPage = filterPage.openDocument();
-        assertTrue(declarationPage.getDocument().isDisplayed());
         declarationPage.totalCost();
+        assertTrue(declarationPage.getDocument().isDisplayed());
+
     }
 }

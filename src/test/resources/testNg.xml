@@ -4,6 +4,9 @@
     <test name="Tests2">
         <classes>
             <class name="declaration.tests.DeclarationFirstPersonTest"/>
+            <class name="declaration.tests.DeclarationSecondPersonTest"/>
+            <class name="declaration.tests.PanelsTest"/>
+            <class name="declaration.tests.CopyPdfFileTest"/>
         </classes>
     </test>
 </suite>

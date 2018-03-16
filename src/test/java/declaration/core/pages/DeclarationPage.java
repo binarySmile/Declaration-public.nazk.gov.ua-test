@@ -12,6 +12,8 @@ import java.util.List;
 
 public class DeclarationPage extends BaseTest {
 
+    private final String txt ="[Не відомо]";
+
     public DeclarationPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         PageFactory.initElements(this.webDriver, this);
@@ -23,27 +25,17 @@ public class DeclarationPage extends BaseTest {
     @FindBy(xpath = "//div/table/tbody/tr/td[3]/b")
     private List <WebElement> listCost;
 
-    @FindBy(xpath = "//div/table/tbody/tr/td[1]/span[2]")
-    private List <WebElement> listType;
-
-    @FindBy(xpath = "//div/table/tbody/tr/td[1]/span[6]")
-    private List <WebElement> listData;
-
     public WebElement getDocument() {
         return document;
     }
 
-    public List <WebElement> getListCost() {
-        return listCost;
-    }
-
-    public void totalCost() {
+    public int totalCost() {
         ArrayList <Integer> ar = new ArrayList <>();
         int totalCost = listCost.size();
         for (int i = 0; i < totalCost; i++) {
             WebElement el = listCost.get(i);
             String text = el.getText();
-            if (text.equals("[Не відомо]"))
+            if (text.equals(txt))
                 text.equalsIgnoreCase(null);
             else {
                 int sum = Integer.parseInt(text);
@@ -56,7 +48,8 @@ public class DeclarationPage extends BaseTest {
             g += h;
 
         System.out.println("\n" +
-                "Total cost of property = " + g);
+                "Total cost of possessions = " + g);
+        return g;
     }
 }
 

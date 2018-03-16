@@ -20,23 +20,14 @@ public class FilterPage extends BaseTest {
     @FindBy(xpath = "//*[@class='result']")
     private WebElement resultSearch;
 
-    @FindBy(className = "break-words")
-    private WebElement nameResultSearch;
+    @FindBy(xpath = "//div/button")
+    private List <WebElement> listFilterButton;
 
-    @FindBy(xpath = "//div[3]/button")
-    private WebElement buttonType;
+    @FindBy(xpath = "//div/button/span[@class = 'ng-binding']")
+    private List <WebElement> searchedFilter;
 
-    @FindBy(xpath = "//div[3]/button/span[@class='ng-binding']")
-    private WebElement selectedType;
-
-    @FindBy(className = "documentType")
-    private WebElement dropdownMenuButton;
-
-    @FindBy(xpath = "//div[2]/button")
-    private WebElement dropdownYearMenuButton;
-
-    @FindBy(xpath = "//div[2]/button/span[@class='ng-binding']")
-    private WebElement selectedYear;
+    @FindBy(xpath = "//div/ul/li/a/span")
+    private List <WebElement> listFilter;
 
     @FindBy(xpath = "//*[@class ='declarationYear']")
     private WebElement panelSelectionOfYear;
@@ -50,51 +41,65 @@ public class FilterPage extends BaseTest {
     @FindBy(xpath = "//*[@id='main-container']//div/article")
     private WebElement resultFilter;
 
-    @FindBy(xpath = "//*[@id='portal-search-form-filters']//div/ul/li/a/span")
-    private List <WebElement> list;
-
     public WebElement getResultSearch() {
         return resultSearch;
     }
 
-    public void openTypeMenu() {
-        buttonType.click();
-    }
-
-    public WebElement getDropdownMenu() {
-        return dropdownMenuButton;
-    }
-
-    public void choiceFilter(String filter) {
-        int total = list.size();
-        for (int i = 0; i < total; i++) {
-            WebElement el = list.get(i);
+    public void openTypeMenu(String typeFilter) {
+        int listMenu = listFilterButton.size();
+        for (int i = 0; i < listMenu; i++) {
+            WebElement el = listFilterButton.get(i);
             String text = el.getText();
-            if (text.equalsIgnoreCase(filter)) {
+            if (text.equalsIgnoreCase(typeFilter)) {
                 el.click();
                 break;
             }
         }
     }
 
+    public void choiceFilter(String type) {
+        int list = listFilter.size();
+        for (int i = 0; i < list; i++) {
+            WebElement el = listFilter.get(i);
+            String text = el.getText();
+            if (text.equalsIgnoreCase(type)) {
+                el.click();
+                break;
+            }
+        }
+    }
+
+    public boolean getDropdownMenu(String type) {
+        int list = listFilter.size();
+        String text;
+        for (int i = 0; i < list; i++) {
+            WebElement el = listFilter.get(i);
+            text = el.getText();
+            if (text.equals(type))
+                return true;
+        }
+        return false;
+    }
+
+
+    public boolean getSelectedFilter(String type) {
+        int list = searchedFilter.size();
+        String text;
+        for (int i = 0; i < list; i++) {
+            WebElement el = searchedFilter.get(i);
+            text = el.getText();
+            if (text.equals(type))
+                return true;
+        }
+        return false;
+    }
+
     public WebElement getPanelSelectionOfYear() {
         return panelSelectionOfYear;
     }
 
-    public void openYearMenu() {
-        dropdownYearMenuButton.click();
-    }
-
     public void runFilter() {
         searchButton.click();
-    }
-
-    public boolean getSelectedType(String type) {
-        return selectedType.getText().equals(type);
-    }
-
-    public boolean getSelectedYear(String year) {
-        return selectedYear.getText().equals(year);
     }
 
     public WebElement getResultFilter() {
