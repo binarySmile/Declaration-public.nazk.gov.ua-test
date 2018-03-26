@@ -9,17 +9,16 @@ import org.openqa.selenium.support.PageFactory;
 
 public class DeclarationPage extends BaseTest {
 
+    @FindBy(xpath = "//div/header/h2/span")
+    private WebElement document;
+
     public DeclarationPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         PageFactory.initElements(this.webDriver, this);
     }
 
-    @FindBy(xpath = "//div/header/h2/span")
-    private WebElement document;
-
     public WebElement getDocument() {
         return document;
     }
-
 }
 

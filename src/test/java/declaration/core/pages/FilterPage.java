@@ -12,11 +12,6 @@ import java.util.List;
 
 public class FilterPage extends BaseTest {
 
-    public FilterPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-        PageFactory.initElements(this.webDriver, this);
-    }
-
     @FindBy(xpath = "//*[@class='result']")
     private WebElement resultSearch;
 
@@ -41,26 +36,14 @@ public class FilterPage extends BaseTest {
     @FindBy(xpath = "//*[@id='main-container']//div/article")
     private WebElement resultFilter;
 
-    public WebElement getResultSearch() {
-        return resultSearch;
+    public FilterPage(WebDriver webDriver) {
+        this.webDriver = webDriver;
+        PageFactory.initElements(this.webDriver, this);
     }
 
-    public void openTypeMenu(String typeFilter) {
-        int listMenu = listFilterButton.size();
-        for (int i = 0; i < listMenu; i++) {
-            WebElement el = listFilterButton.get(i);
-            String text = el.getText();
-            if (text.equalsIgnoreCase(typeFilter)) {
-                el.click();
-                break;
-            }
-        }
-    }
-
-    public void choiceFilter(String type) {
-        int list = listFilter.size();
-        for (int i = 0; i < list; i++) {
-            WebElement el = listFilter.get(i);
+    public void choiceOfElement(String type, List <WebElement> list) {
+        for (int i = 0; i < list.size(); i++) {
+            WebElement el = list.get(i);
             String text = el.getText();
             if (text.equalsIgnoreCase(type)) {
                 el.click();
@@ -69,26 +52,35 @@ public class FilterPage extends BaseTest {
         }
     }
 
-    public boolean getDropdownMenu(String type) {
-        int list = listFilter.size();
+    public void openTypeMenu(String filterButtonName) {
+        choiceOfElement(filterButtonName, listFilterButton);
+    }
+
+    public WebElement getResultSearch() {
+        return resultSearch;
+    }
+
+    public boolean getDropdownMenu(String typeFilter) {
         String text;
-        for (int i = 0; i < list; i++) {
+        for (int i = 0; i < listFilter.size(); i++) {
             WebElement el = listFilter.get(i);
             text = el.getText();
-            if (text.equals(type))
+            if (text.equals(typeFilter))
                 return true;
         }
         return false;
     }
 
+    public void choiceFilter(String typeFilter) {
+        choiceOfElement(typeFilter, listFilter);
+    }
 
-    public boolean getSelectedFilter(String type) {
-        int list = searchedFilter.size();
+    public boolean getSelectedFilter(String typeFilter) {
         String text;
-        for (int i = 0; i < list; i++) {
+        for (int i = 0; i < searchedFilter.size(); i++) {
             WebElement el = searchedFilter.get(i);
             text = el.getText();
-            if (text.equals(type))
+            if (text.equals(typeFilter))
                 return true;
         }
         return false;

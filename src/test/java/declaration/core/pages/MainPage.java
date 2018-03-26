@@ -10,13 +10,13 @@ import org.openqa.selenium.support.PageFactory;
 
 public class MainPage extends BaseTest {
 
-    public MainPage(WebDriver driver) {
-        webDriver = driver;
-        PageFactory.initElements(webDriver, this);
-    }
-
     @FindBy(xpath = "//div/input[@name='q']")
     private WebElement searchInput;
+
+    public MainPage(WebDriver driver) {
+        webDriver = driver;
+        PageFactory.initElements(this.webDriver, this);
+    }
 
     public FilterPage searchOfPerson(String namePerson) {
         searchInput.clear();
