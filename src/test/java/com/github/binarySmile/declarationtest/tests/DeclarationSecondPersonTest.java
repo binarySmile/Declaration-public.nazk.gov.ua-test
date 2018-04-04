@@ -1,12 +1,11 @@
-package declaration.tests;
+package com.github.binarySmile.declarationtest.tests;
 
-
-import declaration.core.BaseTest;
-import declaration.core.util.panels.CommonForPanels;
-import declaration.core.util.panels.PanelOfSecurities;
-import declaration.core.pages.DeclarationPage;
-import declaration.core.pages.FilterPage;
-import declaration.core.pages.MainPage;
+import com.github.binarySmile.declarationtest.core.BaseTest;
+import com.github.binarySmile.declarationtest.core.pages.DeclarationPage;
+import com.github.binarySmile.declarationtest.core.pages.FilterPage;
+import com.github.binarySmile.declarationtest.core.pages.MainPage;
+import com.github.binarySmile.declarationtest.core.util.panels.CommonForPanels;
+import com.github.binarySmile.declarationtest.core.util.panels.PanelOfSecurities;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
@@ -14,7 +13,7 @@ import static org.testng.Assert.assertTrue;
 public class DeclarationSecondPersonTest extends BaseTest {
 
     @Test
-    public void filterAndTestDeclaration(){
+    public void filterAndTestDeclaration() {
         MainPage mainPage = new MainPage(webDriver);
         FilterPage filterPage = mainPage.searchOfPerson(getName2());
         assertTrue(filterPage.getResultSearch().isDisplayed());
@@ -34,7 +33,9 @@ public class DeclarationSecondPersonTest extends BaseTest {
                 commonForPanels.totalCostOfPossessions());
         assertTrue(declarationPage.getDocument().isDisplayed());
         PanelOfSecurities panelOfSecurities = new PanelOfSecurities(webDriver);
-        panelOfSecurities.totalQuantityOfSecurities();
-        panelOfSecurities.totalCostOfSecurities();
+        System.out.println("\n" + "Total quantity of securities = "
+                + panelOfSecurities.totalQuantityOfSecurities());
+        System.out.println("\n" + "Total cost of securities = "
+                + panelOfSecurities.totalCostOfSecurities());
     }
 }

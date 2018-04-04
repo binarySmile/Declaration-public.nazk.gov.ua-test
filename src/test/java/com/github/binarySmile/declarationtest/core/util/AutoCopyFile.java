@@ -1,7 +1,6 @@
-package declaration.core.util;
+package com.github.binarySmile.declarationtest.core.util;
 
-
-import declaration.core.BaseTest;
+import com.github.binarySmile.declarationtest.core.BaseTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,7 +20,7 @@ public class AutoCopyFile extends BaseTest {
 
     public void copyPdfFile() throws InterruptedException {
         pdfFileIcon.click();
-        Util.pause(3000);
+        Util.pause(5000);
     }
 
     public void deleteAllFilesFromFolder(String path) {

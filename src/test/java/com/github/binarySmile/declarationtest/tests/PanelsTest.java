@@ -1,20 +1,18 @@
-package declaration.tests;
+package com.github.binarySmile.declarationtest.tests;
 
-
-import declaration.core.BaseTest;
-import declaration.core.util.panels.CommonForPanels;
-import declaration.core.util.panels.PanelOfSecurities;
-import declaration.core.pages.DeclarationPage;
-import declaration.core.pages.FilterPage;
-import declaration.core.pages.MainPage;
+import com.github.binarySmile.declarationtest.core.BaseTest;
+import com.github.binarySmile.declarationtest.core.pages.DeclarationPage;
+import com.github.binarySmile.declarationtest.core.pages.FilterPage;
+import com.github.binarySmile.declarationtest.core.pages.MainPage;
+import com.github.binarySmile.declarationtest.core.util.panels.CommonForPanels;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-public class DeclarationFirstPersonTest extends BaseTest {
+public class PanelsTest extends BaseTest {
 
     @Test
-    public void filterAndTestDeclaration(){
+    public void filterAndTestDeclaration() {
         MainPage mainPage = new MainPage(webDriver);
         FilterPage filterPage = mainPage.searchOfPerson(getName1());
         assertTrue(filterPage.getResultSearch().isDisplayed());
@@ -29,12 +27,9 @@ public class DeclarationFirstPersonTest extends BaseTest {
         filterPage.runFilter();
         assertTrue(filterPage.getResultFilter().isDisplayed());
         DeclarationPage declarationPage = filterPage.openDocument();
-        CommonForPanels commonForPanels = new CommonForPanels(webDriver);
-        System.out.println("\n" + "Total cost of possessions = " +
-                commonForPanels.totalCostOfPossessions());
         assertTrue(declarationPage.getDocument().isDisplayed());
-        PanelOfSecurities panelOfSecurities = new PanelOfSecurities(webDriver);
-        panelOfSecurities.totalQuantityOfSecurities();
-        panelOfSecurities.totalCostOfSecurities();
+        CommonForPanels commonForPanels = new CommonForPanels(webDriver);
+        System.out.println("Total quantity : "
+                + commonForPanels.filterBySpecifiedValue(getSpecificName()));
     }
 }

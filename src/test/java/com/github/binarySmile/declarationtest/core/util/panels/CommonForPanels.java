@@ -1,6 +1,6 @@
-package declaration.core.util.panels;
+package com.github.binarySmile.declarationtest.core.util.panels;
 
-import declaration.core.BaseTest;
+import com.github.binarySmile.declarationtest.core.BaseTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommonForPanels extends BaseTest {
-
-    private final String valueInsteadOfEmptyCell = "[Не відомо]";
 
     @FindBy(xpath = "//td[1]/span[2]")
     private List <WebElement> typeOfObject;
@@ -27,10 +25,9 @@ public class CommonForPanels extends BaseTest {
         PageFactory.initElements(this.webDriver, this);
     }
 
-    public void filterBySpecifiedValue(String value) {
-        int element = typeOfObject.size();
+    public int filterBySpecifiedValue(String value) {
         int quantity = 0;
-        for (int i = 0; i < element; i++) {
+        for (int i = 0; i < typeOfObject.size(); i++) {
             WebElement el = typeOfObject.get(i);
             String text = el.getText();
             if (text.equals(value)) {
@@ -38,7 +35,7 @@ public class CommonForPanels extends BaseTest {
                 System.out.println(text);
             }
         }
-        System.out.println("Total quantity : " + quantity);
+        return quantity;
     }
 
     public int totalCostOfPossessions() {
@@ -46,7 +43,7 @@ public class CommonForPanels extends BaseTest {
         for (int i = 0; i < listCost.size(); i++) {
             WebElement el = listCost.get(i);
             String text = el.getText();
-            if (text.equals(valueInsteadOfEmptyCell))
+            if (text.equals(getValueInsteadOfEmptyCell()))
                 text.equalsIgnoreCase(null);
             else {
                 int sum = Integer.parseInt(text);

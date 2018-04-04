@@ -1,7 +1,6 @@
-package declaration.core.pages;
+package com.github.binarySmile.declarationtest.core.pages;
 
-
-import declaration.core.BaseTest;
+import com.github.binarySmile.declarationtest.core.BaseTest;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,7 +21,6 @@ public class MainPage extends BaseTest {
         searchInput.clear();
         searchInput.sendKeys(namePerson);
         searchInput.sendKeys(Keys.RETURN);
-
         return new FilterPage(webDriver);
     }
 }

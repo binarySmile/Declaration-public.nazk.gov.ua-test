@@ -1,17 +1,16 @@
-package declaration.tests;
+package com.github.binarySmile.declarationtest.tests;
 
-
-import declaration.core.BaseTest;
-import declaration.core.util.AutoCopyFile;
-import declaration.core.pages.FilterPage;
-import declaration.core.pages.MainPage;
+import com.github.binarySmile.declarationtest.core.BaseTest;
+import com.github.binarySmile.declarationtest.core.pages.FilterPage;
+import com.github.binarySmile.declarationtest.core.pages.MainPage;
+import com.github.binarySmile.declarationtest.core.util.AutoCopyFile;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-public class CopyPdfFileTest extends BaseTest{
+public class CopyPdfFileTest extends BaseTest {
 
-@Test
+    @Test
     public void copyFile() throws InterruptedException {
         MainPage mainPage = new MainPage(webDriver);
         FilterPage filterPage = mainPage.searchOfPerson(getName1());

@@ -1,7 +1,6 @@
-package declaration.core.util.panels;
+package com.github.binarySmile.declarationtest.core.util.panels;
 
-
-import declaration.core.BaseTest;
+import com.github.binarySmile.declarationtest.core.BaseTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,7 +22,7 @@ public class PanelOfSecurities extends BaseTest {
         PageFactory.initElements(this.webDriver, this);
     }
 
-    public void totalQuantityOfSecurities() {
+    public int totalQuantityOfSecurities() {
         ArrayList <Integer> list = new ArrayList <>();
         for (int i = 0; i < quantityOfSecurities.size(); i++) {
             WebElement el = quantityOfSecurities.get(i);
@@ -32,12 +31,9 @@ public class PanelOfSecurities extends BaseTest {
             list.add(sum);
         }
         int totalQuantity = 0;
-
         for (int quantity : list)
             totalQuantity += quantity;
-
-        System.out.println("\n" +
-                "Total quantity of securities = " + totalQuantity);
+        return totalQuantity;
     }
 
     public int totalCostOfSecurities() {
@@ -50,12 +46,8 @@ public class PanelOfSecurities extends BaseTest {
             list.add(sum);
         }
         int totalCostSecurities = 0;
-
         for (int costOfSecurities : list)
             totalCostSecurities += costOfSecurities;
-
-        System.out.println("\n" +
-                "Total cost of securities = " + totalCostSecurities);
         return totalCostSecurities;
     }
 }

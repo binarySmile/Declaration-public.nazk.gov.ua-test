@@ -3,10 +3,10 @@
 <suite name="Test">
     <test name="Tests2">
         <classes>
-            <class name="declaration.tests.DeclarationFirstPersonTest"/>
-            <class name="declaration.tests.DeclarationSecondPersonTest"/>
-            <class name="declaration.tests.PanelsTest"/>
-            <class name="declaration.tests.CopyPdfFileTest"/>
+            <class name="com.github.binarySmile.declarationtest.tests.DeclarationFirstPersonTest"/>
+            <class name="com.github.binarySmile.declarationtest.tests.DeclarationSecondPersonTest"/>
+            <class name="com.github.binarySmile.declarationtest.tests.PanelsTest"/>
+            <class name="com.github.binarySmile.declarationtest.tests.CopyPdfFileTest"/>
         </classes>
     </test>
 </suite>
